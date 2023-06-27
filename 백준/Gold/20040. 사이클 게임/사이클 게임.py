@@ -6,10 +6,9 @@ p = [i for i in range(n)]
 
 
 def find(a):
-    if p[a] == a:
-        return a
-    else:
-        return find(p[a])
+    if p[a] != a:
+        p[a] = find(p[a])
+    return p[a]
 
 
 def union(a, b):
