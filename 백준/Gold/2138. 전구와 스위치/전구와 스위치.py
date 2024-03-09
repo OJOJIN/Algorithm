@@ -21,28 +21,23 @@ ans = -1
 cnt_1 = 0
 cnt_2 = 1
 
-for i in range(1, N + 1):
-    if goal_light == now_light:
-        if ans > cnt_1 or ans == -1:
+for i in range(1, N):
+    if now_light[i - 1] == goal_light[i - 1]:
+        continue
+    turn_switch(i)
+    cnt_1 += 1
+if goal_light == now_light:
+        if ans == -1:
             ans = cnt_1
-            break
-    if i == N:
-        break
-    if now_light[i - 1] != goal_light[i - 1]:
-        turn_switch(i)
-        cnt_1 += 1
 
 now_light = deepcopy(init_light)
 turn_switch(0)
-for i in range(1, N + 1):
-    if goal_light == now_light:
+for i in range(1, N):
+    if now_light[i - 1] == goal_light[i - 1]:
+        continue
+    turn_switch(i)
+    cnt_2 += 1
+if goal_light == now_light:
         if ans > cnt_2 or ans == -1:
             ans = cnt_2
-            break
-    if i == N:
-        break
-    if now_light[i - 1] != goal_light[i - 1]:
-        turn_switch(i)
-        cnt_2 += 1
-
 print(ans)
