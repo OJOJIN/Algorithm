@@ -1,5 +1,7 @@
 from sys import stdin
+from sys import setrecursionlimit
 
+setrecursionlimit(10**6)
 
 def dfs(num, w):
     max = 0
